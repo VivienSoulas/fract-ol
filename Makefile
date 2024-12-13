@@ -1,21 +1,29 @@
-NAME = fractol.a
-SRC = fractol.c
-OBJ = $(SRC:.c=.o)
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
+NAME 	= fractol
+SRC 	= fractol.c
+OBJ 	= $(SRC:%.c=%.o)
+CC 		= cc
+CFLAGS 	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLX 	= ./MLX42
+LIBS 	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+HEADERS = -I $(LIBMLX)/include
 
-all = $(NAME)
+all: libmlx $(NAME)
 
-$(NAME) = $(OBJ)
-	@ar rcs $(NAME) $(OBJ)
+libmlx:
+# echo $(OBJ)
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-(%.o: %.c)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 .PHONY: all clean fclean re
 
 clean:
 	@rm -f $(OBJ)
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
 	@rm -f $(NAME)
