@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 11:36:14 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:47:00 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int	main(int argc, char **argv)
 	fractol.width = atoi(argv[2]);
 	fractol.height = atoi(argv[3]);
 	set_window(&fractol, argv[4]);
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
