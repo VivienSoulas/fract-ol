@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:00:39 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 12:04:31 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:12:54 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	render_julia(mlx_image_t *img, int max_it)
 			}
 	// Combine into an RGBA color
 			color.colrgba = combine_colours(color.red, color.green, color.blue);
-			((uint32_t *)img->pixels)[y * img->width + x] = color.colrgba;
 			set_pixel(img, x, y, color.colrgba);
 			x++;
 		}

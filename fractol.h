@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:47:22 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 12:07:14 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:10:07 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_numbers
 	double		zi;
 	double		tmp;
 }	t_numbers;
-
-void	mlx_initialisation(int width, int height);
 
 void		set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 void		render_mandelbrot(mlx_image_t *img, int max_it);
