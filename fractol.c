@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 11:05:27 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:17:09 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,36 @@
 
 int	main(int argc, char **argv)
 {
-	int 		width;
-	int 		height;
-	int			max_it;
+	t_fractol	fractol;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 
-	if (argc != 4)
+	if (argc != 5)
 	{
-		printf("Please indicate <length> <height>\n");
+		printf("Please indicate <max iteration> <length> <height>\n");
 		printf("For Mandelbrot <m>\nFor Julia <j>\n");
 		return (-1);
 	}
-	if (strcmp(argv[3], "m") != 0 && strcmp(argv[3], "j") != 0)
+	if (strcmp(argv[4], "m") != 0 && strcmp(argv[4], "j") != 0)
 	{
 		printf("Please indicate <m> for Mandelbrot or <j> for Julia\n");
 		return (-1);
 	}
-	max_it = 20;
-	width = atoi(argv[1]);
-	height = atoi(argv[2]);
+	fractol.max_it = atoi(argv[1]);
+	fractol.width = atoi(argv[2]);
+	fractol.height = atoi(argv[3]);
+	if (strcmp(argv[4], "m") == 0)
+	{
+		//set_window(mlx, img, fractol.width, fractol.height);
 // Initialize MLX42
-	mlx = mlx_init(width, height, "MLX42 Image Example", true);
+	mlx = mlx_init(fractol.width, fractol.height, "MLX42 Image Example", true);
 	if (!mlx)
 	{
 		fprintf(stderr, "Failed to initialize MLX42\n");
 		return EXIT_FAILURE;
 	}
 // Create an image
-	img = mlx_new_image(mlx, width, height);
+	img = mlx_new_image(mlx, fractol.width, fractol.height);
 	if (!img)
 	{
 		fprintf(stderr, "Failed to create image\n");
@@ -62,16 +63,18 @@ int	main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 // render mandelbrot
-		render_mandelbrot(img, max_it);
-
+		render_mandelbrot(img, fractol.max_it);
 // Display the image in the window
-	mlx_image_to_window(mlx, img, 0, 0);
-
+		mlx_image_to_window(mlx, img, 0, 0);
 // Main loop
-	mlx_loop(mlx);
-
+		mlx_loop(mlx);
 // Cleanup
 	mlx_delete_image(mlx, img);
 	mlx_terminate(mlx);
+	}
+	else if (strcmp(argv[4], "j") == 0)
+	{
+		
+	}
 	return EXIT_SUCCESS;
 }
