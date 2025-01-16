@@ -1,6 +1,9 @@
 NAME 	= fractol
 SRC 	= 	fractol.c \
-			mandelbrot.c
+			mandelbrot.c \
+			julia.c \
+			utils.c \
+			set_window.c
 
 OBJ 	= $(SRC:%.c=%.o)
 CC 		= cc

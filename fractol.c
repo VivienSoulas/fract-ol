@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 11:17:09 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:36:14 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
-	mlx_t		*mlx;
-	mlx_image_t	*img;
 
 	if (argc != 5)
 	{
@@ -44,37 +42,6 @@ int	main(int argc, char **argv)
 	fractol.max_it = atoi(argv[1]);
 	fractol.width = atoi(argv[2]);
 	fractol.height = atoi(argv[3]);
-	if (strcmp(argv[4], "m") == 0)
-	{
-		//set_window(mlx, img, fractol.width, fractol.height);
-// Initialize MLX42
-	mlx = mlx_init(fractol.width, fractol.height, "MLX42 Image Example", true);
-	if (!mlx)
-	{
-		fprintf(stderr, "Failed to initialize MLX42\n");
-		return EXIT_FAILURE;
-	}
-// Create an image
-	img = mlx_new_image(mlx, fractol.width, fractol.height);
-	if (!img)
-	{
-		fprintf(stderr, "Failed to create image\n");
-		mlx_terminate(mlx);
-		return EXIT_FAILURE;
-	}
-// render mandelbrot
-		render_mandelbrot(img, fractol.max_it);
-// Display the image in the window
-		mlx_image_to_window(mlx, img, 0, 0);
-// Main loop
-		mlx_loop(mlx);
-// Cleanup
-	mlx_delete_image(mlx, img);
-	mlx_terminate(mlx);
-	}
-	else if (strcmp(argv[4], "j") == 0)
-	{
-		
-	}
+	set_window(&fractol, argv[4]);
 	return EXIT_SUCCESS;
 }

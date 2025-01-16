@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Mandelbrot.c                                       :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:33:52 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 10:51:39 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:43:48 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,4 @@ void	render_mandelbrot(mlx_image_t *img, int max_it)
 		}
 		y++;
 	}
-}
-
-// Set a pixel in the image
-void	set_pixel(mlx_image_t *img, int x, int y, uint32_t color)
-{
-	((uint32_t *)img->pixels)[y * img->width + x] = color;
 }

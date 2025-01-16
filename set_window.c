@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   set_window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:09:17 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 11:10:07 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:38:43 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-
+int	set_window(t_fractol *fractol, char *arg)
+{
 // Initialize MLX42
-	mlx = mlx_init(width, height, "MLX42 Image Example", true);
-	if (!mlx)
+	fractol->engine.mlx = mlx_init(fractol->width, fractol->height, "MLX42 Image Example", true);
+	if (!fractol->engine.mlx)
 	{
 		fprintf(stderr, "Failed to initialize MLX42\n");
 		return EXIT_FAILURE;
 	}
 // Create an image
-	img = mlx_new_image(mlx, width, height);
-	if (!img)
+	fractol->engine.window = mlx_new_image(fractol->engine.mlx, fractol->width, fractol->height);
+	if (!fractol->engine.window)
 	{
 		fprintf(stderr, "Failed to create image\n");
-		mlx_terminate(mlx);
+		mlx_terminate(fractol->engine.mlx);
 		return EXIT_FAILURE;
 	}
 // render mandelbrot
-		render_mandelbrot(img, max_it);
+	if (strcmp(arg, "m") == 0)
+		render_mandelbrot(fractol->engine.window, fractol->max_it);
+	else if (strcmp(arg, "j") == 0)
+		render_julia(fractol->engine.window, fractol->max_it);
 // Display the image in the window
-		mlx_image_to_window(mlx, img, 0, 0);
+	mlx_image_to_window(fractol->engine.mlx, fractol->engine.window, 0, 0);
 // Main loop
-		mlx_loop(mlx);
+	mlx_loop(fractol->engine.mlx);
 // Cleanup
-	mlx_delete_image(mlx, img);
-	mlx_terminate(mlx);
+	mlx_delete_image(fractol->engine.mlx, fractol->engine.window);
+	mlx_terminate(fractol->engine.mlx);
+	return (EXIT_SUCCESS);
+}
