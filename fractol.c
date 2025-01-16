@@ -1,4 +1,16 @@
 /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
+/*   Updated: 2025/01/16 11:05:27 by vsoulas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
 /*   fractol.c										  :+:	  :+:	:+:   */
@@ -16,16 +28,22 @@ int	main(int argc, char **argv)
 {
 	int 		width;
 	int 		height;
-	int			max_interations;
+	int			max_it;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 
-	if (argc != 3)
+	if (argc != 4)
 	{
-		printf("invalid arguments\n");
+		printf("Please indicate <length> <height>\n");
+		printf("For Mandelbrot <m>\nFor Julia <j>\n");
 		return (-1);
 	}
-	max_interations = 20;
+	if (strcmp(argv[3], "m") != 0 && strcmp(argv[3], "j") != 0)
+	{
+		printf("Please indicate <m> for Mandelbrot or <j> for Julia\n");
+		return (-1);
+	}
+	max_it = 20;
 	width = atoi(argv[1]);
 	height = atoi(argv[2]);
 // Initialize MLX42
@@ -44,7 +62,7 @@ int	main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 // render mandelbrot
-	render_mandelbrot(img, max_interations);
+		render_mandelbrot(img, max_it);
 
 // Display the image in the window
 	mlx_image_to_window(mlx, img, 0, 0);

@@ -1,6 +1,6 @@
 NAME 	= fractol
 SRC 	= 	fractol.c \
-			Mandelbrot.c
+			mandelbrot.c
 
 OBJ 	= $(SRC:%.c=%.o)
 CC 		= cc
