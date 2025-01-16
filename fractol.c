@@ -20,14 +20,14 @@ int	main(int argc, char **argv)
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 
-	max_interations = 50;
-	width = atoi(argv[1]);
-	height = atoi(argv[2]);
 	if (argc != 3)
 	{
 		printf("invalid arguments\n");
 		return (-1);
 	}
+	max_interations = 20;
+	width = atoi(argv[1]);
+	height = atoi(argv[2]);
 // Initialize MLX42
 	mlx = mlx_init(width, height, "MLX42 Image Example", true);
 	if (!mlx)

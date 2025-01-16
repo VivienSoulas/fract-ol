@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:53:15 by vsoulas           #+#    #+#             */
-/*   Updated: 2024/12/13 12:38:49 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/16 09:59:44 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct s_engine
 {
 	void		*mlx;
 	void		*window;
-	t_image		image;
-	t_fractal	fractal;
 }	t_engine;
 
 void	mlx_initialisation(int width, int height);
