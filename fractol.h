@@ -14,8 +14,21 @@
 # define FRACTOL_H
 
 # include "MLX42/MLX42.h"
-# include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+
+typedef struct s_engine
+{
+	void		*mlx;
+	void		*window;
+	t_image		image;
+	t_fractal	fractal;
+}	t_engine;
+
+void	mlx_initialisation(int width, int height);
+
+void set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
+void render_mandelbrot(mlx_image_t *img, int max_iterations);
 
 #endif

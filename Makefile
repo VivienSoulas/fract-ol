@@ -1,5 +1,7 @@
 NAME 	= fractol
-SRC 	= fractol.c
+SRC 	= 	fractol.c \
+			Mandelbrot.c
+
 OBJ 	= $(SRC:%.c=%.o)
 CC 		= cc
 CFLAGS 	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
@@ -19,7 +21,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-.PHONY: all clean fclean re
+PHONY: all clean fclean re
 
 clean:
 	@rm -f $(OBJ)

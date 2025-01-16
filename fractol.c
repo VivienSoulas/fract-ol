@@ -1,36 +1,59 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 14:53:18 by vsoulas           #+#    #+#             */
-/*   Updated: 2024/12/13 13:20:22 by vsoulas          ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   fractol.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: vsoulas <vsoulas@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/12/06 14:53:18 by vsoulas		   #+#	#+#			 */
+/*   Updated: 2024/12/13 13:20:22 by vsoulas		  ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-#include "MLX42/MLX42.h"
-#include <stdlib.h>
-#include <string.h>
-
-int32_t	main(void)
+int	main(int argc, char **argv)
 {
-    mlx_t* mlx = mlx_init(256, 256, "MLX42", true);
-    if (!mlx)
-        exit(EXIT_FAILURE);
+	int 		width;
+	int 		height;
+	int			max_interations;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 
-    mlx_image_t* img = mlx_new_image(mlx, 128, 128);
+	max_interations = 50;
+	width = atoi(argv[1]);
+	height = atoi(argv[2]);
+	if (argc != 3)
+	{
+		printf("invalid arguments\n");
+		return (-1);
+	}
+// Initialize MLX42
+	mlx = mlx_init(width, height, "MLX42 Image Example", true);
+	if (!mlx)
+	{
+		fprintf(stderr, "Failed to initialize MLX42\n");
+		return EXIT_FAILURE;
+	}
+// Create an image
+	img = mlx_new_image(mlx, width, height);
+	if (!img)
+	{
+		fprintf(stderr, "Failed to create image\n");
+		mlx_terminate(mlx);
+		return EXIT_FAILURE;
+	}
+// render mandelbrot
+	render_mandelbrot(img, max_interations);
 
-    // Set the channels of each pixel in our image to the maximum byte value of 255. 
-    memset(img->pixels, 255, img->width * img->height * 0x000000FF);
+// Display the image in the window
+	mlx_image_to_window(mlx, img, 0, 0);
 
-    mlx_image_to_window(mlx, img, 0, 0);
+// Main loop
+	mlx_loop(mlx);
 
-    // Run the main loop and terminate on quit.  
-    mlx_loop(mlx);
-    mlx_terminate(mlx);
-    return (EXIT_SUCCESS);
+// Cleanup
+	mlx_delete_image(mlx, img);
+	mlx_terminate(mlx);
+	return EXIT_SUCCESS;
 }
