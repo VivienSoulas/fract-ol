@@ -6,58 +6,61 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:33:52 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/16 12:12:50 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:35:17 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	render_mandelbrot(mlx_image_t *img, int max_it)
+// Map pixel (x, y) to complex plane between -2 and 2
+// Mandelbrot pixels in the complex plane
+// Map it to color
+// Combine into an RGBA color
+// fra = fractol, max_it = max iteration
+// w = width of the image depending on the zoom
+void	render_mandelbrot(mlx_image_t *img, t_fractol *fra, int max_it)
 {
-	int			y;
-	int			x;
-	int			it;
-	t_numbers	num;
-	t_colours	color;
+	t_numbers	n;
 
-	y = 0;
-	while (y < (int)img->height)
+	n.y = 0;
+	while (n.y < (int)img->height)
 	{
-		x = 0;
-		while (x < (int)img->width)
+		n.x = 0;
+		while (n.x < (int)img->width)
 		{
-	// Map pixel (x, y) to complex plane between -2 and 2 with x on 0
-			num.real = (x - img->width / 2.0) * 4.0 / img->width;
-			num.imag = (y - img->height / 2.0) * 4.0 / img->width;
-			num.zr = 0.0;
-			num.zi = 0.0;
-			it = 0;
-	// Mandelbrot it
-			while (num.zr * num.zr + num.zi * num.zi <= 4.0 && it < max_it)
-			{
-				num.tmp = num.zr * num.zr - num.zi * num.zi + num.real;
-				num.zi = 2.0 * num.zr * num.zi + num.imag;
-				num.zr = num.tmp;
-				it++;
-			}
-	// Map it to color
-			if (it == max_it)
-			{
-				color.red = 255;
-				color.green = 0;
-				color.blue = 0;
-			}
+			n.w = img->width * fra->zoom;
+			n.r = ((n.x - img->width / 2.0) * 4.0 / n.w) + fra->c_x;
+			n.i = ((n.y - img->height / 2.0) * 4.0 / n.w) + fra->c_y;
+			n.it = calc_mandelbrot(max_it, n.r, n.i);
+			if (n.it == max_it)
+				fra->rgba = c(0, 0, 0);
 			else
-			{
-				color.red = (255 * it) / max_it;
-				color.green = (255 * it) / max_it;
-				color.blue = 0;
-			}
-	// Combine into an RGBA color
-			color.colrgba = combine_colours(color.red, color.green, color.blue);
-			set_pixel(img, x, y, color.colrgba);
-			x++;
+				fra->rgba = c(fra->r * n.it, fra->g * n.it, fra->b * n.it);
+			set_pixel(img, n.x, n.y, fra->rgba);
+			n.x++;
 		}
-		y++;
+		n.y++;
 	}
+}
+
+// real = real part of the constant complex number c
+// num.r = real part of the complex number z in the formula z = z^2 + c
+// this num.zr changes in each iteration (aka z_real)
+int	calc_mandelbrot(int max_it, double real, double imag)
+{
+	double			tmp;
+	t_numbers		num;
+
+	num.r = 0.0;
+	num.i = 0.0;
+	num.it = 0.0;
+	tmp = 0.0;
+	while (num.r * num.r + num.i * num.i <= 4.0 && num.it < max_it)
+	{
+		tmp = num.r * num.r - num.i * num.i + real;
+		num.i = 2.0 * num.r * num.i + imag;
+		num.r = tmp;
+		num.it++;
+	}
+	return (num.it);
 }
