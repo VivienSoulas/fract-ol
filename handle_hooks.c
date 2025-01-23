@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:12:20 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 11:13:17 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:50:12 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,25 @@ void	handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra)
 	if (keydata.key == MLX_KEY_J)
 	{
 		fra->arg = "j";
-		ft_printf("Julia\n");
+		ft_printf("Julia preset 1\n");
 		initial_state(fra);
 	}
 	else if (keydata.key == MLX_KEY_M)
 	{
 		fra->arg = "m";
 		ft_printf("Mandelbrot\n");
+		initial_state(fra);
+	}
+	else if (keydata.key == MLX_KEY_P)
+	{
+		fra->arg = "p";
+		ft_printf("Julia preset 2\n");
+		initial_state(fra);
+	}
+	else if (keydata.key == MLX_KEY_O)
+	{
+		fra->arg = "o";
+		ft_printf("Julia preset 3\n");
 		initial_state(fra);
 	}
 }
@@ -42,27 +54,9 @@ void	handle_iteration(mlx_key_data_t keydata, t_fractol *fra)
 	}
 }
 
-void	handle_preset(mlx_key_data_t keydata, t_fractol *fra)
+void	handle_reset(mlx_key_data_t keydata, t_fractol *fra)
 {
-	if (keydata.key == MLX_KEY_P)
-	{
-		fra->cjr = -0.8;
-		fra->cji = 0.156;
-		ft_printf("Julia preset 1\n");
-	}
-	else if (keydata.key == MLX_KEY_O)
-	{
-		fra->cjr = -0.70176;
-		fra->cji = -0.3842;
-		ft_printf("Julia preset 2\n");
-	}
-	else if (keydata.key == MLX_KEY_I)
-	{
-		fra->cjr = 0.4;
-		fra->cji = -0.4;
-		ft_printf("Julia preset 3\n");
-	}
-	else if (keydata.key == MLX_KEY_R)
+	if (keydata.key == MLX_KEY_R)
 	{
 		ft_printf("Reset\n");
 		initial_state(fra);

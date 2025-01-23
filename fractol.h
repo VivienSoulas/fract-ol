@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:47:22 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:04:08 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:50:20 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		scrollhook(double xdelta, double ydelta, void *param);
 void		keyhook(mlx_key_data_t keydata, void *param);
 void		handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_iteration(mlx_key_data_t keydata, t_fractol *fra);
-void		handle_preset(mlx_key_data_t keydata, t_fractol *fra);
+void		handle_reset(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_colours(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_moves(mlx_key_data_t keydata, t_fractol *fra);
 void		close_window(t_fractol *fractol);

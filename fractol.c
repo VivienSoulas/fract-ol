@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:18:04 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:35:30 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	check_arg(char **argv)
 		}
 		i++;
 	}
-	if ((ft_strcmp(argv[i], "m") == 0) || (ft_strcmp(argv[i], "j") == 0))
+	if ((ft_strcmp(argv[i], "m") == 0) || (ft_strcmp(argv[i], "j") == 0)
+		|| (ft_strcmp(argv[i], "o") == 0) || (ft_strcmp(argv[i], "p") == 0))
 		return (0);
 	return (1);
 }

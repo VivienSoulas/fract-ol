@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:32:45 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 10:54:31 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:50:33 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	{
 		handle_fractal_selection(keydata, fra);
 		handle_iteration(keydata, fra);
-		handle_preset(keydata, fra);
+		handle_reset(keydata, fra);
 		handle_colours(keydata, fra);
 		handle_moves(keydata, fra);
 	}
