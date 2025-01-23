@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 11:03:38 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 11:13:16 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 5)
 	{
-		ft_printf("Please indicate <max iteration> <width> <height> <fractal selection>\n");
+		ft_printf("Please indicate");
+		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
 		ft_printf("Fractal selection: Mandelbrot <m>\n Julia <j>\n");
 		return (-1);
 	}
