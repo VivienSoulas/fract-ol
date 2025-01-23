@@ -16,8 +16,10 @@ use key esc to close window
 
 
  // TO DO \\
+check argc for numbers when numbers are needed !!
 zoom that follows the pointer
 code extra fractal
+take care of resizing window ?
 
 
  / ! \ not to self / ! \

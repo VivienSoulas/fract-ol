@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:47:22 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 10:38:20 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:04:08 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_numbers
 	int			w;
 }	t_numbers;
 
+int			check_arg(char **argv);
 void		set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 int			set_window(t_fractol *fra);
 void		initial_state(t_fractol *fra);
@@ -80,5 +81,6 @@ void		handle_moves(mlx_key_data_t keydata, t_fractol *fra);
 void		close_window(t_fractol *fractol);
 int			ft_atoi(char *str);
 int			ft_strcmp(char *str1, char *str2);
+int			ft_isnum(char c);
 
 #endif

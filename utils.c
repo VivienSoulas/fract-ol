@@ -6,11 +6,18 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:43:16 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/17 14:55:28 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:12:44 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	ft_isnum(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(char *str)
 {
@@ -33,7 +40,7 @@ int	ft_strcmp(char *str1, char *str2)
 	while (str1[i] || str2[i])
 	{
 		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+			return (-1);
 		i++;
 	}
 	return (0);
