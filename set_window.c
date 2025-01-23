@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:09:17 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:46:24 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:22:47 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	initial_state(t_fractol *fra)
 	}
 	else if (ft_strcmp(fra->arg, "o") == 0)
 	{
-		fra->cjr = -0.4;
+		fra->cjr = 0.4;
 		fra->cji = -0.4;
 	}
 }
