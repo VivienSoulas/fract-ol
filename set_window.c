@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:09:17 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 10:54:48 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 11:05:07 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	set_window(t_fractol *fra)
 	fra->mlx = mlx_init(fra->width, fra->height, "Fractal", true);
 	if (!fra->mlx)
 	{
-		ft_printf("Failed to initialize MLX42\n");
+		ft_ft_printf("Failed to initialize MLX42\n");
 		return (EXIT_FAILURE);
 	}
 	fra->win = mlx_new_image(fra->mlx, fra->width, fra->height);
 	if (!fra->win)
 	{
-		ft_printf("Failed to create image\n");
+		ft_ft_printf("Failed to create image\n");
 		mlx_terminate(fra->mlx);
 		return (EXIT_FAILURE);
 	}
@@ -69,13 +69,13 @@ void	close_window(t_fractol *fractol)
 {
 	if (fractol->win)
 	{
-		printf("Closing window\n");
+		ft_printf("Closing window\n");
 		mlx_delete_image(fractol->mlx, fractol->win);
 		fractol->win = NULL;
 	}
 	if (fractol->mlx)
 	{
-		printf("Terminating MLX42\n");
+		ft_printf("Terminating MLX42\n");
 		mlx_terminate(fractol->mlx);
 		fractol->mlx = NULL;
 	}

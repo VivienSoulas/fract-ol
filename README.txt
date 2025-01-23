@@ -16,7 +16,6 @@ use key esc to close window
 
 
  // TO DO \\
-ft_printf
 zoom that follows the pointer
 code extra fractal
 
