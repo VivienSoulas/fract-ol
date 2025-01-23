@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:35:30 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:05:43 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ int	main(int argc, char **argv)
 
 	if (argc != 5)
 	{
-		ft_printf("Please indicate");
+		ft_printf("Please indicate :\n");
 		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
-		ft_printf("Fractal selection: Mandelbrot <m> Julia <j>\n");
-		return (-1);
+		ft_printf("Mandelbrot <m> Julia 1 <j> Julia 2 <p> Julia 3 <o>\n");
+		return (1);
 	}
 	if (check_arg(argv) == 1)
 	{
-		ft_printf("Please indicate");
+		ft_printf("Please indicate :\n");
 		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
-		ft_printf("Fractal selection: Mandelbrot <m> Julia <j>\n");
-		return (-2);
+		ft_printf("Mandelbrot <m> Julia 1 <j> Julia 2 <p> Julia 3 <o>\n");
+		return (1);
 	}
 	initial_state(&fractol);
 	fractol.max_it = ft_atoi(argv[1]);
