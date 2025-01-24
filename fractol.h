@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:47:22 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/24 17:36:55 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:54:47 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,7 @@ void		handle_iteration(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_reset(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_colours(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_moves(mlx_key_data_t keydata, t_fractol *fra);
-
-void	rezise_callback(int32_t width, int32_t height, void* param);
-
+void		rezise_callback(int32_t width, int32_t height, void *param);
 void		close_window(t_fractol *fractol);
 int			ft_atoi(char *str);
 int			ft_strcmp(char *str1, char *str2);

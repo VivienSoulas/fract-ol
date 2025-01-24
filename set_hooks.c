@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:32:45 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/24 17:41:10 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:54:41 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	acquisition(fra->win, fra);
 }
 
-void	rezise_callback(int32_t width, int32_t height, void* param)
+void	rezise_callback(int32_t width, int32_t height, void *param)
 {
 	t_fractol	*fra;
 
