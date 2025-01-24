@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 13:05:43 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:25:55 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 		ft_printf("Mandelbrot <m> Julia 1 <j> Julia 2 <p> Julia 3 <o>\n");
 		return (1);
 	}
-	if (check_arg(argv) == 1)
+	fractol.arg = argv[4];
+	if (check_arg(argv, &fractol) == 1)
 	{
 		ft_printf("Please indicate :\n");
 		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
@@ -35,12 +36,11 @@ int	main(int argc, char **argv)
 	fractol.width = ft_atoi(argv[2]);
 	fractol.height = ft_atoi(argv[3]);
 	fractol.init_max = ft_atoi(argv[1]);
-	fractol.arg = argv[4];
 	set_window(&fractol);
 	return (EXIT_SUCCESS);
 }
 
-int	check_arg(char **argv)
+int	check_arg(char **argv, t_fractol *fractol)
 {
 	int	i;
 	int	j;
@@ -57,8 +57,10 @@ int	check_arg(char **argv)
 		}
 		i++;
 	}
-	if ((ft_strcmp(argv[i], "m") == 0) || (ft_strcmp(argv[i], "j") == 0)
-		|| (ft_strcmp(argv[i], "o") == 0) || (ft_strcmp(argv[i], "p") == 0))
+	if ((ft_strcmp(fractol->arg, "m") == 0)
+		|| (ft_strcmp(fractol->arg, "j") == 0)
+		|| (ft_strcmp(fractol->arg, "o") == 0)
+		|| (ft_strcmp(fractol->arg, "p") == 0))
 		return (0);
 	return (1);
 }

@@ -6,14 +6,14 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:47:22 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:50:20 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:22:47 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "MLX42/MLX42.h"
+# include "MLX42/include/MLX42/MLX42.h"
 # include "ft_printf/ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -61,7 +61,7 @@ typedef struct s_numbers
 	int			w;
 }	t_numbers;
 
-int			check_arg(char **argv);
+int			check_arg(char **argv, t_fractol *fractol);
 void		set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 int			set_window(t_fractol *fra);
 void		initial_state(t_fractol *fra);

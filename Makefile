@@ -9,34 +9,49 @@ SRC 	= 	fractol.c \
 
 OBJ 	= $(SRC:%.c=%.o)
 CC 		= cc
-CFLAGS 	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLX 	= ./MLX42
-PRINTF 	= ./ft_printf
-PRINTF_LIB = $(PRINTF)/libftprintf.a
-LIBS 	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-HEADERS = -I $(LIBMLX)/include -I $(PRINTF)
+CFLAGS 	= -Wextra -Wall -Werror -g
 
-all: libmlx $(NAME)
+# MLX Linker Flags
+FLAGSMLX = -ldl -lglfw -pthread -lm
 
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+# libraries paths
+MLX			= ./MLX42
+MLX_LIB		= $(MLX)/build/libmlx42.a 
+PRINTF		= ./ft_printf
+PRINTF_LIB	= $(PRINTF)/libftprintf.a
+HEADERS = -I $(MLX)/include -I $(PRINTF)
+
+all: $(MLX_LIB) $(PRINTF_LIB) $(NAME)
+
+# build ML42 Library
+$(MLX_LIB):
+	@cmake $(MLX) -B $(MLX)/build
+	@make -C $(MLX)/build -j4
+	@echo "MLX42 compiled"
+
+# build ft_printf library
+$(PRINTF_LIB):
 	@make -C $(PRINTF)
+	@echo "ft_printf compiled"
 
-$(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBS) $(PRINTF_LIB) $(HEADERS) -o $(NAME)
+# compile the project
+$(NAME): $(MLX_LIB) $(PRINTF_LIB) $(OBJ)
+	@$(CC) $(CFLAGS) $(FLAGSMLX) $(OBJ) $(MLX_LIB) $(PRINTF_LIB) $(HEADERS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 PHONY: all clean fclean re
 
 clean:
 	@rm -f $(OBJ)
-	@rm -rf $(LIBMLX)/build
+	@rm -rf $(MLX)/build
 	@make -C $(PRINTF) clean
+	@echo "Objects removed"
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -C $(PRINTF) fclean
+	@echo "Executable removed"
 
 re: fclean all
