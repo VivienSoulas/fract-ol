@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:09:17 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 13:22:47 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:43:22 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	set_window(t_fractol *fra)
 	mlx_image_to_window(fra->mlx, fra->win, 0, 0);
 	mlx_scroll_hook(fra->mlx, &scrollhook, fra);
 	mlx_key_hook(fra->mlx, &keyhook, fra);
+	mlx_resize_hook(fra->mlx, &rezise_callback, fra);
 	mlx_loop(fra->mlx);
 	close_window(fra);
 	return (EXIT_SUCCESS);

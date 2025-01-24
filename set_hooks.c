@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:32:45 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:50:33 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:41:10 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,24 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		handle_moves(keydata, fra);
 	}
 	acquisition(fra->win, fra);
+}
+
+void	rezise_callback(int32_t width, int32_t height, void* param)
+{
+	t_fractol	*fra;
+
+	fra = param;
+	fra->width = width;
+	fra->height = height;
+	ft_printf("Window resized to: %d x %d\n", width, height);
+	mlx_delete_image(fra->mlx, fra->win);
+	fra->win = mlx_new_image(fra->mlx, fra->width, fra->height);
+	if (!fra->win)
+	{
+		ft_printf("Failed to create image\n");
+		mlx_terminate(fra->mlx);
+		exit(EXIT_FAILURE);
+	}
+	acquisition(fra->win, fra);
+	mlx_image_to_window(fra->mlx, fra->win, 0, 0);
 }
