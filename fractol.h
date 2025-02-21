@@ -57,6 +57,13 @@ typedef struct s_numbers
 	double		tmp;
 	double		di;
 	double		dr;
+	double		denom;
+	double		z4_r;
+	double		z4_i;
+	double		z3_r;
+	double		z3_i;
+	double		tmp_r;
+	double		tmp_i;
 	int			y;
 	int			x;
 	int			it;
