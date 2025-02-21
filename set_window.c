@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:09:17 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/24 17:43:22 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:56:34 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	initial_state(t_fractol *fra)
 	fra->c_y = 0.0;
 	fra->zoom = 1.0;
 	fra->max_it = fra->init_max;
-	fra->r = 255;
-	fra->g = 255;
-	fra->b = 255;
+	fra->r = 0;
+	fra->g = 0;
+	fra->b = 0;
 	fra->rgba = c(fra->r, fra->g, fra->b);
 	if (ft_strcmp(fra->arg, "j") == 0)
 	{
@@ -69,6 +69,11 @@ void	initial_state(t_fractol *fra)
 		fra->cjr = 0.4;
 		fra->cji = -0.4;
 	}
+	if (ft_strcmp(fra->arg, "i") == 0)
+	{
+		fra->cjr = -0.123;
+		fra->cji = 0.745;
+	}
 }
 
 void	acquisition(mlx_image_t *win, t_fractol *fractol)
@@ -80,6 +85,8 @@ void	acquisition(mlx_image_t *win, t_fractol *fractol)
 	else if (ft_strcmp(fractol->arg, "p") == 0)
 		render_julia(win, fractol, fractol->max_it);
 	else if (ft_strcmp(fractol->arg, "o") == 0)
+		render_julia(win, fractol, fractol->max_it);
+	else if (ft_strcmp(fractol->arg, "i") == 0)
 		render_julia(win, fractol, fractol->max_it);
 }
 

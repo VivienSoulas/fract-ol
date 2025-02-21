@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:12:20 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/23 12:50:12 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:55:25 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra)
 	{
 		fra->arg = "o";
 		ft_printf("Julia preset 3\n");
+		initial_state(fra);
+	}
+		else if (keydata.key == MLX_KEY_I)
+	{
+		fra->arg = "i";
+		ft_printf("Julia preset 4\n");
 		initial_state(fra);
 	}
 }

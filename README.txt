@@ -1,12 +1,13 @@
 use "make" to make fractol
 
 use "./fractol <max_iteration> <length> <height> <arg>" to run program
-	possible args : m, j, p, o
+	possible args : m, j, p, o, i
 
 use key m to switch to Mandelbrot
 use key j to switch to Julia preset 1
 use key p to switch to Julia preset 2
 use key o to switch to Julia preset 3
+use key i to switch to Julia preset 4
 	changing between fractal will reset initial parameters
 
 use key r to reset zoom, max_iteration and colours

@@ -6,7 +6,7 @@
 /*   By: vsoulas <vsoulas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:32:25 by vsoulas           #+#    #+#             */
-/*   Updated: 2025/01/24 13:25:55 by vsoulas          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:55:58 by vsoulas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	check_arg(char **argv, t_fractol *fractol)
 	if ((ft_strcmp(fractol->arg, "m") == 0)
 		|| (ft_strcmp(fractol->arg, "j") == 0)
 		|| (ft_strcmp(fractol->arg, "o") == 0)
-		|| (ft_strcmp(fractol->arg, "p") == 0))
+		|| (ft_strcmp(fractol->arg, "p") == 0)
+		|| (ft_strcmp(fractol->arg, "i") == 0))
 		return (0);
 	return (1);
 }
