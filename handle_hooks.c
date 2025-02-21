@@ -12,18 +12,12 @@
 
 #include "fractol.h"
 
-void	handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra)
+void	handle_fractal_select_julia(mlx_key_data_t keydata, t_fractol *fra)
 {
 	if (keydata.key == MLX_KEY_J)
 	{
 		fra->arg = "j";
 		ft_printf("Julia preset 1\n");
-		initial_state(fra);
-	}
-	else if (keydata.key == MLX_KEY_M)
-	{
-		fra->arg = "m";
-		ft_printf("Mandelbrot\n");
 		initial_state(fra);
 	}
 	else if (keydata.key == MLX_KEY_P)
@@ -38,10 +32,31 @@ void	handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra)
 		ft_printf("Julia preset 3\n");
 		initial_state(fra);
 	}
-		else if (keydata.key == MLX_KEY_I)
+	else if (keydata.key == MLX_KEY_I)
 	{
 		fra->arg = "i";
 		ft_printf("Julia preset 4\n");
+		initial_state(fra);
+	}
+}
+
+void	handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra)
+{
+	if (keydata.key == MLX_KEY_M)
+	{
+		fra->arg = "m";
+		ft_printf("Mandelbrot\n");
+		initial_state(fra);
+	}
+	else if (keydata.key == MLX_KEY_N)
+	{
+		fra->arg = "n";
+		ft_printf("Newton\n");
+		initial_state(fra);
+	}
+	else if (keydata.key == MLX_KEY_Q)
+	{
+		ft_printf("Reset\n");
 		initial_state(fra);
 	}
 }
@@ -60,18 +75,9 @@ void	handle_iteration(mlx_key_data_t keydata, t_fractol *fra)
 	}
 }
 
-void	handle_reset(mlx_key_data_t keydata, t_fractol *fra)
-{
-	if (keydata.key == MLX_KEY_R)
-	{
-		ft_printf("Reset\n");
-		initial_state(fra);
-	}
-}
-
 void	handle_colours(mlx_key_data_t keydata, t_fractol *fra)
 {
-	if (keydata.key == MLX_KEY_T)
+	if (keydata.key == MLX_KEY_R)
 	{
 		ft_printf("Red = %i\n", fra->r);
 		fra->r += 10;

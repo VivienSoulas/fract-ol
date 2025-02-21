@@ -42,9 +42,9 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		close_window(fra);
 	else
 	{
+		handle_fractal_select_julia(keydata, fra);
 		handle_fractal_selection(keydata, fra);
 		handle_iteration(keydata, fra);
-		handle_reset(keydata, fra);
 		handle_colours(keydata, fra);
 		handle_moves(keydata, fra);
 	}

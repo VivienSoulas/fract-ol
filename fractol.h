@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "MLX42/include/MLX42/MLX42.h"
+# include "MLX42/MLX42.h"
 # include "ft_printf/ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -55,33 +55,52 @@ typedef struct s_numbers
 	double		r;
 	double		i;
 	double		tmp;
+	double		di;
+	double		dr;
 	int			y;
 	int			x;
 	int			it;
 	int			w;
 }	t_numbers;
 
+// check args and initialise state
 int			check_arg(char **argv, t_fractol *fractol);
+void		initial_state(t_fractol *fra);
+void		ft_set_julia(t_fractol *fra);
+
+// set window and aquire fractal
 void		set_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 int			set_window(t_fractol *fra);
-void		initial_state(t_fractol *fra);
 void		acquisition(mlx_image_t *win, t_fractol *fractol);
+void		close_window(t_fractol *fractol);
+
+// calculation of fractals
 void		render_mandelbrot(mlx_image_t *img, t_fractol *fractol, int max_it);
 void		render_julia(mlx_image_t *img, t_fractol *fra, int max_it);
+void		render_newton(mlx_image_t *img, t_fractol *fra, int max_it);
 int			calc_mandelbrot(int max_it, double real, double imag);
 int			calc_julia(int max_it, double real, double imag, t_fractol *fra);
+int			calc_newton(int max_it, double real, double imag);
+
+// colours managment
 uint32_t	c(int a, int b, int c);
+
+// hooks
 void		scrollhook(double xdelta, double ydelta, void *param);
 void		keyhook(mlx_key_data_t keydata, void *param);
+
+// hooks handling + windoz resize
+void		handle_fractal_select_julia(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_fractal_selection(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_iteration(mlx_key_data_t keydata, t_fractol *fra);
-void		handle_reset(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_colours(mlx_key_data_t keydata, t_fractol *fra);
 void		handle_moves(mlx_key_data_t keydata, t_fractol *fra);
 void		rezise_callback(int32_t width, int32_t height, void *param);
-void		close_window(t_fractol *fractol);
+
+// utils
 int			ft_atoi(char *str);
 int			ft_strcmp(char *str1, char *str2);
 int			ft_isnum(char c);
+void		ft_print_utils(void);
 
 #endif

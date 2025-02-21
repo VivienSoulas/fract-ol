@@ -18,17 +18,13 @@ int	main(int argc, char **argv)
 
 	if (argc != 5)
 	{
-		ft_printf("Please indicate :\n");
-		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
-		ft_printf("Mandelbrot <m> Julia 1 <j> Julia 2 <p> Julia 3 <o>\n");
+		ft_print_utils();
 		return (1);
 	}
 	fractol.arg = argv[4];
 	if (check_arg(argv, &fractol) == 1)
 	{
-		ft_printf("Please indicate :\n");
-		ft_printf("<max iteration> <width> <height> <fractal selection>\n");
-		ft_printf("Mandelbrot <m> Julia 1 <j> Julia 2 <p> Julia 3 <o>\n");
+		ft_print_utils();
 		return (1);
 	}
 	initial_state(&fractol);
@@ -61,7 +57,8 @@ int	check_arg(char **argv, t_fractol *fractol)
 		|| (ft_strcmp(fractol->arg, "j") == 0)
 		|| (ft_strcmp(fractol->arg, "o") == 0)
 		|| (ft_strcmp(fractol->arg, "p") == 0)
-		|| (ft_strcmp(fractol->arg, "i") == 0))
+		|| (ft_strcmp(fractol->arg, "i") == 0)
+		|| (ft_strcmp(fractol->arg, "n") == 0))
 		return (0);
 	return (1);
 }
