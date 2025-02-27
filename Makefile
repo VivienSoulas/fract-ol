@@ -39,9 +39,10 @@ $(PRINTF_LIB):
 # compile the project
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(PRINTF_LIB) -o $(NAME) $(FLAGSMLX)
+	@echo "Program compiled"
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 PHONY: all clean fclean re
 
