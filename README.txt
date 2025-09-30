@@ -19,9 +19,3 @@ use key s to decrease max_iteration (-5)
 use key r, g and b to change colours
 use arrows to move within the fract'ol
 use key esc to close window
-
-
-
- // TO DO \\
-zoom that follows the pointer
-code extra fractal
